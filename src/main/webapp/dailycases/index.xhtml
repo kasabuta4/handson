@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>日次新規感染者数一覧 - 検索条件</title>
+    </h:head>
+    <h:body>
+        <h1>日次新規感染者数一覧 - 検索条件</h1>
+        <h:form id="search_condition">
+            <p>
+                <h:outputLabel for="prefecture" value="都道府県" />
+                <h:inputText id="prefecture" title="都道府県"
+                             value="#{日次新規感染者数一覧.p検索条件.p都道府県}" />
+            </p>
+            <p>
+                <h:commandButton type="submit" value="実行" title="実行"
+                                 action="#{日次新規感染者数一覧.execute}" />
+            </p>
+        </h:form>
+    </h:body>
+</html>
+
