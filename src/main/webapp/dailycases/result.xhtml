@@ -5,6 +5,7 @@
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
     <h:head>
         <title>日次新規感染者数一覧 - 検索結果</title>
+        <h:outputStylesheet library="css" name="common.css" />
     </h:head>
     <h:body>
         <h1>日次新規感染者数一覧 - 検索結果</h1>
@@ -20,7 +21,7 @@
                 <ui:repeat var="row" value="#{日次新規感染者数一覧.p検索結果}">
                     <tr>
                         <th>#{row.p報告日}</th>
-                        <td>#{row.p新規感染者数}</td>
+                        <td class="number">#{row.p新規感染者数}</td>
                     </tr>
                 </ui:repeat>
             </tbody>

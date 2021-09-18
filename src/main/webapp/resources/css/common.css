@@ -1,0 +1,44 @@
+body {
+    background-color: lemonchiffon;
+    font-family: sans-serif;
+    font-size: 12pt;
+}
+
+h1, table > caption {
+    font-size: 16pt;
+    font-weight: bold;
+}
+
+table {
+    border-collapse : collapse;
+}
+
+thead, tbody, tfoot {
+    border-color: black;
+    border-style: solid;
+    border-width: medium;
+}
+
+thead {
+    background-color: yellow;
+}
+
+tbody > tr:nth-child(even) {
+    background-color: cyan;
+}
+
+th, td {
+    border-color: black;
+    border-style: solid;
+    border-width: thin;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+thead th {
+    text-align: center;
+}
+
+tbody td.number {
+    text-align: right;
+}
