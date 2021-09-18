@@ -13,6 +13,7 @@
                 <h:outputLabel for="prefecture" value="都道府県" />
                 <h:inputText id="prefecture" title="都道府県"
                              value="#{日次新規感染者数一覧.p検索条件.p都道府県}" />
+                <h:message for="prefecture" styleClass="validationerror" />
             </p>
             <p>
                 <h:commandButton type="submit" value="実行" title="実行"

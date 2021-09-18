@@ -10,6 +10,8 @@ import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.Valid;
+import javax.validation.constraints.NotNull;
 
 @Named("日次新規感染者数一覧")
 @ConversationScoped
@@ -19,7 +21,7 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   @Inject private transient C日次新規感染者数検索 検索;
 
-  private C日次新規感染者数検索条件 p検索条件 = new C日次新規感染者数検索条件();
+  @NotNull @Valid private C日次新規感染者数検索条件 p検索条件 = new C日次新規感染者数検索条件();
 
   private List<C日次新規感染者数> p検索結果;
 
