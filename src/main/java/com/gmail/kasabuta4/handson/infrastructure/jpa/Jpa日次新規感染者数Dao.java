@@ -8,8 +8,8 @@ import java.util.List;
 import static java.util.stream.Collectors.toList;
 import java.util.stream.Stream;
 import javax.enterprise.context.ApplicationScoped;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class Jpa日次新規感染者数Dao implements C日次新規感染者数Dao {
@@ -23,8 +23,7 @@ public class Jpa日次新規感染者数Dao implements C日次新規感染者数
       + "WHERE "
       + "    PREFECTURE = ?";
 
-  @PersistenceContext(unitName = "jsfdemoPU")
-  private EntityManager em;
+  @Inject @JsfDemoDB private EntityManager em;
 
   @Override
   public List<C日次新規感染者数> search(C日次新規感染者数検索条件 検索条件) {
