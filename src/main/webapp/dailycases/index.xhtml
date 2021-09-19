@@ -1,7 +1,8 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <h:head>
         <title>日次新規感染者数一覧 - 検索条件</title>
         <h:outputStylesheet library="css" name="common.css" />
@@ -11,8 +12,13 @@
         <h:form id="search_condition">
             <p>
                 <h:outputLabel for="prefecture" value="都道府県" />
-                <h:inputText id="prefecture" title="都道府県"
-                             value="#{日次新規感染者数一覧.p検索条件.p都道府県}" />
+                <h:selectOneMenu id="prefecture" title="都道府県"
+                             value="#{日次新規感染者数一覧.p検索条件.p都道府県}">
+                    <f:selectItem itemLabel="北海道" itemValue="Hokkaido" />
+                    <f:selectItem itemLabel="東京都" itemValue="Tokyo" />
+                    <f:selectItem itemLabel="大阪府" itemValue="Osaka" />
+                    <f:selectItem itemLabel="沖縄県" itemValue="Okinawa" />
+                </h:selectOneMenu>
                 <h:message for="prefecture" styleClass="validationerror" />
             </p>
             <p>
