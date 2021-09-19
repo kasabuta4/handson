@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.util.List;
 import javax.enterprise.context.Conversation;
 import javax.enterprise.context.ConversationScoped;
+import javax.faces.application.FacesMessage;
+import static javax.faces.application.FacesMessage.SEVERITY_WARN;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
 import javax.validation.Valid;
@@ -16,6 +19,10 @@ import javax.validation.constraints.NotNull;
 @Named("日次新規感染者数一覧")
 @ConversationScoped
 public class C日次新規感染者数一覧 implements Serializable {
+
+  private static final String EXECUTE_COMPONENT_CLIENT_ID = "search_condition:execute";
+
+  private static final String NOT_FOUND_MESSAGE = "検索結果がありません";
 
   @Inject private transient Conversation conversation;
 
@@ -26,9 +33,16 @@ public class C日次新規感染者数一覧 implements Serializable {
   private List<C日次新規感染者数> p検索結果;
 
   public String execute() {
-    if(conversation.isTransient()) conversation.begin();
     doExecute();
-    return redirectTo("result.xhtml");
+
+    if (!p検索結果.isEmpty()) {
+      if (conversation.isTransient()) conversation.begin();
+      return redirectTo("result.xhtml");
+    } else {
+      FacesContext.getCurrentInstance()
+          .addMessage(EXECUTE_COMPONENT_CLIENT_ID, creeateNotFoundMessage());
+      return null;
+    }
   }
 
   public void endConversation() {
@@ -37,6 +51,10 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   private void doExecute() {
     p検索結果 = 検索.execute(p検索条件);
+  }
+
+  private FacesMessage creeateNotFoundMessage() {
+    return new FacesMessage(SEVERITY_WARN, NOT_FOUND_MESSAGE, NOT_FOUND_MESSAGE);
   }
 
   public C日次新規感染者数検索条件 getP検索条件() {

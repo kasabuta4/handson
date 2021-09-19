@@ -16,8 +16,9 @@
                 <h:message for="prefecture" styleClass="validationerror" />
             </p>
             <p>
-                <h:commandButton type="submit" value="実行" title="実行"
+                <h:commandButton id="execute" type="submit" value="実行" title="実行"
                                  action="#{日次新規感染者数一覧.execute}" />
+                <h:message for="execute" styleClass="validationerror" />
             </p>
         </h:form>
     </h:body>
