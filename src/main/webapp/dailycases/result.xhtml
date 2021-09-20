@@ -26,7 +26,11 @@
                 <ui:repeat var="row" value="#{日次新規感染者数一覧.p検索結果}">
                     <tr>
                         <th>#{row.p報告日}</th>
-                        <td class="number">#{row.p新規感染者数}</td>
+                        <td class="number">
+                            <h:outputText value="#{row.p新規感染者数}">
+                                <f:convertNumber groupingUsed="true" />
+                            </h:outputText>
+                        </td>
                     </tr>
                 </ui:repeat>
             </tbody>
