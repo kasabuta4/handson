@@ -14,10 +14,7 @@
                 <h:outputLabel for="prefecture" value="都道府県" />
                 <h:selectOneMenu id="prefecture" title="都道府県"
                              value="#{日次新規感染者数一覧.p検索条件.p都道府県}">
-                    <f:selectItem itemLabel="北海道" itemValue="Hokkaido" />
-                    <f:selectItem itemLabel="東京都" itemValue="Tokyo" />
-                    <f:selectItem itemLabel="大阪府" itemValue="Osaka" />
-                    <f:selectItem itemLabel="沖縄県" itemValue="Okinawa" />
+                    <f:selectItems value="#{日次新規感染者数一覧.p都道府県Options}" />
                 </h:selectOneMenu>
                 <h:message for="prefecture" styleClass="validationerror" />
             </p>
