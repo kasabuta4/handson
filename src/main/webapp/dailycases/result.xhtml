@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:f="http://xmlns.jcp.org/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:basic="http://xmlns.jcp.org/jsf/composite/component_basic">
     <h:head>
         <title>日次新規感染者数一覧 - 検索結果</title>
         <h:outputStylesheet library="css" name="common.css" />
@@ -27,9 +28,7 @@
                     <tr>
                         <th>#{row.p報告日}</th>
                         <td class="number">
-                            <h:outputText value="#{row.p新規感染者数}">
-                                <f:convertNumber groupingUsed="true" />
-                            </h:outputText>
+                            <basic:outputGroupingNumber value="#{row.p新規感染者数}" />
                         </td>
                     </tr>
                 </ui:repeat>

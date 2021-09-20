@@ -1,0 +1,20 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<ui:component
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:h="http://xmlns.jcp.org/jsf/html"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+        xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+    <cc:interface name="outputGroupingNumber">
+        <cc:attribute name="value" required="true" />
+    </cc:interface>
+
+    <cc:implementation>
+        <h:outputText value="#{cc.attrs.value}">
+            <f:convertNumber groupingUsed="true" />
+        </h:outputText>
+    </cc:implementation>
+</ui:component>
+
