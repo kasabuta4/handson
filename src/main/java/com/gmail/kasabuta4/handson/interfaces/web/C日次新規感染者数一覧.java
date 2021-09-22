@@ -3,15 +3,14 @@ package com.gmail.kasabuta4.handson.interfaces.web;
 import com.gmail.kasabuta4.handson.application.C日次新規感染者数検索;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数検索条件;
-import static com.gmail.kasabuta4.handson.interfaces.web.RedirectUtil.redirectTo;
 import java.io.Serializable;
+import static java.util.Collections.emptyList;
 import static java.util.Collections.unmodifiableMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 import javax.annotation.PostConstruct;
-import javax.enterprise.context.Conversation;
-import javax.enterprise.context.ConversationScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
 import static javax.faces.application.FacesMessage.SEVERITY_WARN;
 import javax.faces.context.FacesContext;
@@ -21,14 +20,12 @@ import javax.validation.Valid;
 import javax.validation.constraints.NotNull;
 
 @Named("日次新規感染者数一覧")
-@ConversationScoped
+@RequestScoped
 public class C日次新規感染者数一覧 implements Serializable {
 
   private static final String EXECUTE_COMPONENT_CLIENT_ID = "search_condition:execute";
 
   private static final String NOT_FOUND_MESSAGE = "検索結果がありません";
-
-  @Inject private transient Conversation conversation;
 
   @Inject private transient C日次新規感染者数検索 検索;
 
@@ -36,7 +33,7 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   private Map<String, String> p都道府県Options;
 
-  private List<C日次新規感染者数> p検索結果;
+  private List<C日次新規感染者数> p検索結果 = emptyList();
 
   @PostConstruct
   private void init() {
@@ -48,21 +45,13 @@ public class C日次新規感染者数一覧 implements Serializable {
     p都道府県Options = unmodifiableMap(map);
   }
 
-  public String execute() {
+  public void execute() {
     doExecute();
 
-    if (!p検索結果.isEmpty()) {
-      if (conversation.isTransient()) conversation.begin();
-      return redirectTo("result.xhtml");
-    } else {
+    if (p検索結果.isEmpty()) {
       FacesContext.getCurrentInstance()
           .addMessage(EXECUTE_COMPONENT_CLIENT_ID, creeateNotFoundMessage());
-      return null;
     }
-  }
-
-  public void endConversation() {
-    if(!conversation.isTransient()) conversation.end();
   }
 
   private void doExecute() {
