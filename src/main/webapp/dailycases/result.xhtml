@@ -26,7 +26,11 @@
             <tbody>
                 <ui:repeat var="row" value="#{日次新規感染者数一覧.p検索結果}">
                     <tr>
-                        <th>#{row.p報告日}</th>
+                        <th>
+                            <h:outputText value="#{row.p報告日}">
+                                <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
+                            </h:outputText>
+                        </th>
                         <td class="number">
                             <basic:outputGroupingNumber value="#{row.p新規感染者数}" />
                         </td>
