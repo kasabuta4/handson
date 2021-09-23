@@ -4,7 +4,8 @@
         xmlns="http://www.w3.org/1999/xhtml"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:h="http://xmlns.jcp.org/jsf/html"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:basic="http://xmlns.jcp.org/jsf/composite/component_basic">
     <h1>日次新規感染者数一覧 - 検索条件</h1>
     <h:form id="condition">
         <p>
@@ -17,13 +18,11 @@
         </p>
         <p>
             <h:outputText value="表示期間" />
-            <h:inputText id="date_from" value="#{日次新規感染者数一覧.p検索条件.p表示期間From}">
-                <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
-            </h:inputText>
+            <basic:inputLocalDate id="date_from"
+                    value="#{日次新規感染者数一覧.p検索条件.p表示期間From}" />
             <h:outputText value="〜" />
-            <h:inputText id="date_to" value="#{日次新規感染者数一覧.p検索条件.p表示期間To}">
-                <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
-            </h:inputText>
+            <basic:inputLocalDate id="date_to"
+                    value="#{日次新規感染者数一覧.p検索条件.p表示期間To}" />
         </p>
         <p>
             <h:commandButton id="execute" type="submit" value="実行" title="実行"
