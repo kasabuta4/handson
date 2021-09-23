@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<ui:component
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+    <cc:interface name="searchAndResultView">
+        <cc:attribute name="resultList" required="true" />
+        <cc:attribute name="searchSectionSrc" required="true" />
+        <cc:attribute name="resultSectionSrc" required="true" />
+    </cc:interface>
+
+    <cc:implementation>
+        <f:subview id="search" rendered="#{empty cc.attrs.resultList}">
+            <ui:include src="#{cc.attrs.searchSectionSrc}" />
+        </f:subview>
+        <f:subview id="result" rendered="#{not empty cc.attrs.resultList}">
+            <ui:include src="#{cc.attrs.resultSectionSrc}" />
+        </f:subview>
+    </cc:implementation>
+</ui:component>

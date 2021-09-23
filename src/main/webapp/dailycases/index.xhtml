@@ -2,20 +2,18 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:f="http://xmlns.jcp.org/jsf/core"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:template="http://xmlns.jcp.org/jsf/composite/component_template">
     <h:head>
         <title>日次新規感染者数一覧</title>
         <h:outputStylesheet library="css" name="common.css" />
     </h:head>
     <h:body>
         <ui:debug />
-        <f:subview id="search" rendered="#{empty 日次新規感染者数一覧.p検索結果}">
-            <ui:include src="search_condition.xhtml" />
-        </f:subview>
-        <f:subview id="result" rendered="#{not empty 日次新規感染者数一覧.p検索結果}">
-            <ui:include src="search_result.xhtml" />
-        </f:subview>
+        <template:searchAndResultView
+                resultList="#{日次新規感染者数一覧.p検索結果}"
+                searchSectionSrc="/dailycases/search_condition.xhtml"
+                resultSectionSrc="/dailycases/search_result.xhtml" />
         <h:messages globalOnly="true" />
     </h:body>
 </html>
