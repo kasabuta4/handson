@@ -1,19 +1,18 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 
-<html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:template="http://xmlns.jcp.org/jsf/composite/component_view">
-    <h:head>
-        <title>日次新規感染者数一覧</title>
-        <h:outputStylesheet library="css" name="common.css" />
-    </h:head>
-    <h:body>
-        <ui:debug />
-        <template:searchAndResultView
+<ui:composition
+        template="/templates/simple.xhtml"
+        xmlns="http://www.w3.org/1999/xhtml"
+        xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+        xmlns:view="http://xmlns.jcp.org/jsf/composite/component_view">
+
+    <ui:define name="title">日次新規感染者数一覧</ui:define>
+
+    <ui:define name="contents">
+        <view:searchAndResultView
                 resultList="#{日次新規感染者数一覧.p検索結果}"
                 searchSectionSrc="/dailycases/search_condition.xhtml"
                 resultSectionSrc="/dailycases/search_result.xhtml" />
-        <h:messages globalOnly="true" />
-    </h:body>
-</html>
+    </ui:define>
+
+</ui:composition>
