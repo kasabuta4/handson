@@ -16,6 +16,16 @@
             <h:message for="prefecture" styleClass="validationerror" />
         </p>
         <p>
+            <h:outputText value="表示期間" />
+            <h:inputText id="date_from" value="#{日次新規感染者数一覧.p検索条件.p表示期間From}">
+                <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
+            </h:inputText>
+            <h:outputText value="〜" />
+            <h:inputText id="date_to" value="#{日次新規感染者数一覧.p検索条件.p表示期間To}">
+                <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
+            </h:inputText>
+        </p>
+        <p>
             <h:commandButton id="execute" type="submit" value="実行" title="実行"
                              action="#{日次新規感染者数一覧.execute}" />
             <h:message for="execute" styleClass="validationerror" />
