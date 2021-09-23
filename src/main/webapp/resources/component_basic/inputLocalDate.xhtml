@@ -5,7 +5,8 @@
         xmlns:h="http://xmlns.jcp.org/jsf/html"
         xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
         xmlns:cc="http://xmlns.jcp.org/jsf/composite"
-        xmlns:f="http://xmlns.jcp.org/jsf/core">
+        xmlns:f="http://xmlns.jcp.org/jsf/core"
+        xmlns:pt="http://xmlns.jcp.org/jsf/passthrough">
 
     <cc:interface name="inputLocalDate">
         <cc:attribute name="value" required="true" />
@@ -16,12 +17,13 @@
     </cc:interface>
 
     <cc:implementation>
-        <h:inputText value="#{cc.attrs.value}"
+        <h:inputText pt:type="date"
+                     value="#{cc.attrs.value}"
                      title="#{cc.attrs.title}"
                      disabled="#{cc.attrs.disabled}"
                      readonly="#{cc.attrs.readonly}"
                      tabindex="#{cc.attrs.tabindex}">
-            <f:convertDateTime type="localDate" pattern="uuuu/MM/dd" />
+            <f:convertDateTime type="localDate" pattern="uuuu-MM-dd" />
         </h:inputText>
     </cc:implementation>
 </ui:component>
