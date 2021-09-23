@@ -9,6 +9,7 @@
         <h:outputStylesheet library="css" name="common.css" />
     </h:head>
     <h:body>
+        <ui:debug />
         <f:subview id="search" rendered="#{empty 日次新規感染者数一覧.p検索結果}">
             <ui:include src="search_condition.xhtml" />
         </f:subview>
