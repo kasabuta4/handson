@@ -4,7 +4,6 @@ import com.gmail.kasabuta4.handson.domain.C日次新規感染者数;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数Dao;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数検索条件;
 import java.sql.Date;
-import static java.text.MessageFormat.format;
 import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -17,10 +16,8 @@ import javax.persistence.EntityManager;
 @ApplicationScoped
 public class Jpa日次新規感染者数Dao implements C日次新規感染者数Dao {
 
-  private static final String SQL_STATEMENTS_FILE = "Jpa日次新規感染者数DaoSql";
-  
-  private static final ResourceBundle SQL_STATEMENTS = ResourceBundle.getBundle(
-      format("{0}.{1}", Jpa日次新規感染者数Dao.class.getPackage().getName(), SQL_STATEMENTS_FILE));
+  private static final ResourceBundle SQL_STATEMENTS = 
+      SqlStatementsResourceUtil.getBundle(Jpa日次新規感染者数Dao.class);
 
   private static final String SEARCH_SQL_KEY = "Jpa日次新規感染者数DaoSql.SEARCH";
 
