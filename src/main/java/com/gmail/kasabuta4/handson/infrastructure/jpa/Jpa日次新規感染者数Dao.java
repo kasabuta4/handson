@@ -4,6 +4,7 @@ import com.gmail.kasabuta4.handson.domain.C日次新規感染者数;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数Dao;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数検索条件;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Date;
 import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
 import java.util.List;
@@ -27,8 +28,8 @@ public class Jpa日次新規感染者数Dao implements C日次新規感染者数
 
   static {
     SQL_STATEMENTS = new Properties();
-    try {
-      SQL_STATEMENTS.load(Jpa日次新規感染者数Dao.class.getResourceAsStream(SQL_STATEMENTS_FILE));
+    try (InputStream in = Jpa日次新規感染者数Dao.class.getResourceAsStream(SQL_STATEMENTS_FILE)) {
+      SQL_STATEMENTS.load(in);
     } catch (IOException e) {
       // ignore
     }
