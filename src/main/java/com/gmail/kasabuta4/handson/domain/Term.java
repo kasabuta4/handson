@@ -3,12 +3,14 @@ package com.gmail.kasabuta4.handson.domain;
 import java.io.Serializable;
 import java.time.temporal.Temporal;
 
-public class Term<T extends Temporal & Serializable> implements Serializable {
+public abstract class Term<T extends Temporal & Serializable> implements Serializable {
 
   private T from;
   private T to;
 
-  public Term() {};
+  protected Term() {};
+
+  public abstract Term<T> normalized();
 
   public T getFrom() {
     return from;
