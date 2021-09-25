@@ -19,10 +19,10 @@
         <p>
             <h:outputText value="表示期間" />
             <basic:inputLocalDate id="date_from"
-                    value="#{日次新規感染者数一覧.p検索条件.p表示期間From}" />
+                                  value="#{日次新規感染者数一覧.p検索条件.p表示期間.from}" />
             <h:outputText value="〜" />
             <basic:inputLocalDate id="date_to"
-                    value="#{日次新規感染者数一覧.p検索条件.p表示期間To}" />
+                                  value="#{日次新規感染者数一覧.p検索条件.p表示期間.to}" />
         </p>
         <p>
             <h:commandButton id="execute" type="submit" value="実行" title="実行"

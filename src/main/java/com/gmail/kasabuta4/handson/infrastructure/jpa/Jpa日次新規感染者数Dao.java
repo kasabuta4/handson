@@ -29,8 +29,8 @@ public class Jpa日次新規感染者数Dao implements C日次新規感染者数
 
     Stream rawStream = em.createNativeQuery(SQL_STATEMENTS.getString(SEARCH_SQL_KEY))
         .setParameter(1, normalized検索条件.getP都道府県())
-        .setParameter(2, normalized検索条件.getP表示期間From().format(ISO_LOCAL_DATE))
-        .setParameter(3, normalized検索条件.getP表示期間To().format(ISO_LOCAL_DATE))
+        .setParameter(2, normalized検索条件.getP表示期間().getFrom().format(ISO_LOCAL_DATE))
+        .setParameter(3, normalized検索条件.getP表示期間().getTo().format(ISO_LOCAL_DATE))
         .getResultStream();
 
     @SuppressWarnings("unchecked")

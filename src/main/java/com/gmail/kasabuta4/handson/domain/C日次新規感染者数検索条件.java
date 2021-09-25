@@ -11,9 +11,7 @@ public class C日次新規感染者数検索条件 implements Serializable {
   @NotEmpty(message="必須項目です")
   private String p都道府県;
 
-  private LocalDate p表示期間From;
-
-  private LocalDate p表示期間To;
+  private Term<LocalDate> p表示期間 = new Term<>();
 
   public C日次新規感染者数検索条件() {
   }
@@ -22,8 +20,9 @@ public class C日次新規感染者数検索条件 implements Serializable {
     C日次新規感染者数検索条件 result = new C日次新規感染者数検索条件();
 
     result.p都道府県 = p都道府県;
-    result.p表示期間From = p表示期間From == null ? LocalDate.of(2019, 1, 1) : p表示期間From;
-    result.p表示期間To = p表示期間To == null ? LocalDate.now() : p表示期間To;
+    result.p表示期間.setFrom(
+        p表示期間.getFrom() == null ? LocalDate.of(2019, 1, 1) : p表示期間.getFrom());
+    result.p表示期間.setTo(p表示期間.getTo() == null ? LocalDate.now() : p表示期間.getTo());
 
     return result;
   }
@@ -36,19 +35,7 @@ public class C日次新規感染者数検索条件 implements Serializable {
     this.p都道府県 = p都道府県;
   }
 
-  public LocalDate getP表示期間From() {
-    return p表示期間From;
-  }
-
-  public void setP表示期間From(LocalDate p表示期間From) {
-    this.p表示期間From = p表示期間From;
-  }
-
-  public LocalDate getP表示期間To() {
-    return p表示期間To;
-  }
-
-  public void setP表示期間To(LocalDate p表示期間To) {
-    this.p表示期間To = p表示期間To;
+  public Term<LocalDate> getP表示期間() {
+    return p表示期間;
   }
 }
