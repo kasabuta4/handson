@@ -12,8 +12,7 @@ import javax.transaction.Transactional;
 @ApplicationScoped
 public class C日次新規感染者数検索Impl implements C日次新規感染者数検索 {
 
-  @Inject
-  private C日次新規感染者数Dao dao;
+  @Inject private C日次新規感染者数Dao dao;
 
   @Transactional
   @Override

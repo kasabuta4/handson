@@ -11,8 +11,7 @@ public class C日次新規感染者数 implements Serializable {
 
   private int p新規感染者数;
 
-  public C日次新規感染者数() {
-  }
+  public C日次新規感染者数() {}
 
   public LocalDate getP報告日() {
     return p報告日;

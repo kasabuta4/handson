@@ -8,14 +8,12 @@ public class C日次新規感染者数検索条件 implements Serializable {
 
   private static final long serialVersionUID = 1L;
 
-  @NotEmpty(message="必須項目です")
+  @NotEmpty(message = "必須項目です")
   private String p都道府県;
 
-  @Valid
-  private LocalDateTerm p表示期間 = new LocalDateTerm();
+  @Valid private LocalDateTerm p表示期間 = new LocalDateTerm();
 
-  public C日次新規感染者数検索条件() {
-  }
+  public C日次新規感染者数検索条件() {}
 
   public C日次新規感染者数検索条件 normalized() {
     C日次新規感染者数検索条件 result = new C日次新規感染者数検索条件();

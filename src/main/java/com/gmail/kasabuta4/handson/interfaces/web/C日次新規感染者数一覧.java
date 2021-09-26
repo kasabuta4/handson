@@ -1,11 +1,13 @@
 package com.gmail.kasabuta4.handson.interfaces.web;
 
+import static java.util.Collections.emptyList;
+import static java.util.Collections.unmodifiableMap;
+import static javax.faces.application.FacesMessage.SEVERITY_WARN;
+
 import com.gmail.kasabuta4.handson.application.C日次新規感染者数検索;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数;
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数検索条件;
 import java.io.Serializable;
-import static java.util.Collections.emptyList;
-import static java.util.Collections.unmodifiableMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,7 +15,6 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import static javax.faces.application.FacesMessage.SEVERITY_WARN;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
