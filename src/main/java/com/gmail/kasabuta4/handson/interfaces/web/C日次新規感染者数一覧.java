@@ -9,14 +9,18 @@ import static java.util.Collections.unmodifiableMap;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
+import static javax.faces.application.FacesMessage.SEVERITY_ERROR;
 import static javax.faces.application.FacesMessage.SEVERITY_WARN;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
+import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
 
 @Named("日次新規感染者数一覧")
@@ -26,6 +30,8 @@ public class C日次新規感染者数一覧 implements Serializable {
   private static final String EXECUTE_COMPONENT_CLIENT_ID = "search_condition:execute";
 
   private static final String NOT_FOUND_MESSAGE = "検索結果がありません";
+
+  @Inject private Validator validator;
 
   @Inject private transient C日次新規感染者数検索 検索;
 
@@ -46,6 +52,14 @@ public class C日次新規感染者数一覧 implements Serializable {
   }
 
   public void execute() {
+    Set<ConstraintViolation<C日次新規感染者数検索条件>> violations = validator.validate(p検索条件);
+
+    violations.stream()
+        .map(violation -> new FacesMessage(SEVERITY_ERROR, violation.getMessage(), violation.getMessage()))
+        .forEach(message -> FacesContext.getCurrentInstance().addMessage(null, message));
+
+    if (!violations.isEmpty()) return;
+
     doExecute();
 
     if (p検索結果.isEmpty()) {

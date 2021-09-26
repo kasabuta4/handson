@@ -1,7 +1,7 @@
 package com.gmail.kasabuta4.handson.domain;
 
 import java.io.Serializable;
-import java.time.LocalDate;
+import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
 
 public class C日次新規感染者数検索条件 implements Serializable {
@@ -11,7 +11,8 @@ public class C日次新規感染者数検索条件 implements Serializable {
   @NotEmpty(message="必須項目です")
   private String p都道府県;
 
-  private Term<LocalDate> p表示期間 = new LocalDateTerm();
+  @Valid
+  private LocalDateTerm p表示期間 = new LocalDateTerm();
 
   public C日次新規感染者数検索条件() {
   }
@@ -33,7 +34,7 @@ public class C日次新規感染者数検索条件 implements Serializable {
     this.p都道府県 = p都道府県;
   }
 
-  public Term<LocalDate> getP表示期間() {
+  public LocalDateTerm getP表示期間() {
     return p表示期間;
   }
 }

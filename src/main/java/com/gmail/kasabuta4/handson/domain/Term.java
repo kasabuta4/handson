@@ -3,7 +3,8 @@ package com.gmail.kasabuta4.handson.domain;
 import java.io.Serializable;
 import java.time.temporal.Temporal;
 
-public abstract class Term<T extends Temporal & Serializable> implements Serializable {
+@InOrder(message="期間の開始と終了が逆転しています")
+public abstract class Term<T extends Temporal & Comparable<?>> implements Serializable {
 
   private T from;
   private T to;

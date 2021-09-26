@@ -12,8 +12,8 @@ public class LocalDateTerm extends Term<LocalDate> {
   }
 
   @Override
-  public Term<LocalDate> normalized() {
-    Term<LocalDate> result = new LocalDateTerm();
+  public LocalDateTerm normalized() {
+    LocalDateTerm result = new LocalDateTerm();
 
     result.setFrom(getFrom() == null ? LOWER_BOUND : getFrom());
     result.setTo(getTo() == null ? UPPER_BOUND : getTo());
