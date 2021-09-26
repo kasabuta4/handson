@@ -10,6 +10,7 @@ public class TermInOrderValidator implements ConstraintValidator<InOrder, Term<?
     ConstraintValidator.super.initialize(constraintAnnotation);
   }
 
+  @SuppressWarnings("unchecked")
   @Override
   public boolean isValid(Term<?> value, ConstraintValidatorContext context) {
     if (value == null || value.getFrom() == null || value.getTo() == null) return true;
