@@ -26,6 +26,7 @@
         </p>
         <p>
             <h:commandButton id="execute" type="submit" value="実行" title="実行"
+                             rendered="#{日次新規感染者数一覧.executionAllowed}"
                              action="#{日次新規感染者数一覧.execute}" />
             <h:message for="execute" styleClass="validationerror" />
         </p>

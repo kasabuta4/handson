@@ -18,6 +18,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
 import javax.inject.Named;
+import javax.security.enterprise.SecurityContext;
 import javax.validation.ConstraintViolation;
 import javax.validation.Valid;
 import javax.validation.Validator;
@@ -33,9 +34,13 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   @Inject private Validator validator;
 
+  @Inject private SecurityContext securityContext;
+
   @Inject private transient C日次新規感染者数検索 検索;
 
   @NotNull @Valid private C日次新規感染者数検索条件 p検索条件 = new C日次新規感染者数検索条件();
+
+  private boolean executionAllowed = false;
 
   private Map<String, String> p都道府県Options;
 
@@ -43,6 +48,8 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   @PostConstruct
   private void init() {
+    executionAllowed = securityContext.isCallerInRole("USER");
+
     Map<String, String> map = new LinkedHashMap<>();
     map.put("北海道", "Hokkaido");
     map.put("東京都", "Tokyo");
@@ -74,6 +81,10 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   public C日次新規感染者数検索条件 getP検索条件() {
     return p検索条件;
+  }
+
+  public boolean isExecutionAllowed() {
+    return executionAllowed;
   }
 
   public Map<String, String> getP都道府県Options() {
