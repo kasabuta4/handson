@@ -13,7 +13,6 @@ import java.util.Set;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.application.FacesMessage;
-import static javax.faces.application.FacesMessage.SEVERITY_ERROR;
 import static javax.faces.application.FacesMessage.SEVERITY_WARN;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -53,11 +52,7 @@ public class C日次新規感染者数一覧 implements Serializable {
 
   public void execute() {
     Set<ConstraintViolation<C日次新規感染者数検索条件>> violations = validator.validate(p検索条件);
-
-    violations.stream()
-        .map(violation -> new FacesMessage(SEVERITY_ERROR, violation.getMessage(), violation.getMessage()))
-        .forEach(message -> FacesContext.getCurrentInstance().addMessage(null, message));
-
+    ConstraintViolationUtil.reportMessages(violations);
     if (!violations.isEmpty()) return;
 
     doExecute();
