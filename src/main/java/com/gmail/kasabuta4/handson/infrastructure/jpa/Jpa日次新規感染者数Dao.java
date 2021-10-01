@@ -1,6 +1,6 @@
 package com.gmail.kasabuta4.handson.infrastructure.jpa;
 
-import static java.time.format.DateTimeFormatter.ISO_LOCAL_DATE;
+import static java.text.MessageFormat.format;
 import static java.util.stream.Collectors.toList;
 
 import com.gmail.kasabuta4.handson.domain.C日次新規感染者数;
@@ -26,13 +26,8 @@ public class Jpa日次新規感染者数Dao implements C日次新規感染者数
 
   @Override
   public List<C日次新規感染者数> search(C日次新規感染者数検索条件 検索条件) {
-    C日次新規感染者数検索条件 normalized検索条件 = 検索条件.normalized();
-
     Stream rawStream =
-        em.createNativeQuery(SQL_STATEMENTS.getString(SEARCH_SQL_KEY))
-            .setParameter(1, normalized検索条件.getP都道府県())
-            .setParameter(2, normalized検索条件.getP表示期間().getFrom().format(ISO_LOCAL_DATE))
-            .setParameter(3, normalized検索条件.getP表示期間().getTo().format(ISO_LOCAL_DATE))
+        em.createNativeQuery(format(SQL_STATEMENTS.getString(SEARCH_SQL_KEY), 検索条件.toWhereClause()))
             .getResultStream();
 
     @SuppressWarnings("unchecked")
