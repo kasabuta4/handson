@@ -2,7 +2,7 @@ package com.gmail.kasabuta4.handson.domain;
 
 import java.io.Serializable;
 
-@InOrder(message = "範囲の開始と終了が逆転しています")
+@InOrder
 public class Range<T extends Comparable<? super T>> implements Serializable {
 
   private T start;
