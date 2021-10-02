@@ -20,7 +20,7 @@ import javax.validation.Payload;
 @Retention(RUNTIME)
 @Repeatable(InOrder.List.class)
 @Target({FIELD, METHOD, CONSTRUCTOR, PARAMETER, TYPE, ANNOTATION_TYPE, TYPE_USE})
-@Constraint(validatedBy = {TermInOrderValidator.class})
+@Constraint(validatedBy = {RangeInOrderValidator.class})
 public @interface InOrder {
 
   String message() default "{com.gmail.kasabuta4.handson.domain.InOrder.message}";

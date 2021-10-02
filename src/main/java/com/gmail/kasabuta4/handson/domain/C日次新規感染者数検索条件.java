@@ -12,14 +12,14 @@ public class C日次新規感染者数検索条件 implements Serializable {
   @NotEmpty(message = "必須項目です")
   private String p都道府県;
 
-  @Valid private Term<LocalDate> p表示期間 = new Term<>();
+  @Valid private Range<LocalDate> p表示期間 = new Range<>();
 
   public C日次新規感染者数検索条件() {}
 
   public String toWhereClause() {
     return SqlBooleanExpression.eqString("PREFECTURE", p都道府県)
-        .and(SqlBooleanExpression.geLocalDate("REPORTED_DATE", p表示期間.getFrom()))
-        .and(SqlBooleanExpression.leLocalDate("REPORTED_DATE", p表示期間.getTo()))
+        .and(SqlBooleanExpression.geLocalDate("REPORTED_DATE", p表示期間.getStart()))
+        .and(SqlBooleanExpression.leLocalDate("REPORTED_DATE", p表示期間.getEnd()))
         .toWhereClause();
   }
 
@@ -31,7 +31,7 @@ public class C日次新規感染者数検索条件 implements Serializable {
     this.p都道府県 = p都道府県;
   }
 
-  public Term<LocalDate> getP表示期間() {
+  public Range<LocalDate> getP表示期間() {
     return p表示期間;
   }
 }
