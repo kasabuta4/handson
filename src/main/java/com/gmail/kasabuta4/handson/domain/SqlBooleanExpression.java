@@ -44,6 +44,14 @@ public abstract class SqlBooleanExpression {
     return value == null ? EMPTY : new Terminal(columnName, "LIKE", format("''%{0}%''", value));
   }
 
+  public static SqlBooleanExpression geInteger(String columnName, Integer value) {
+    return value == null ? EMPTY : new Terminal(columnName, ">=", value.toString());
+  }
+
+  public static SqlBooleanExpression leInteger(String columnName, Integer value) {
+    return value == null ? EMPTY : new Terminal(columnName, "<=", value.toString());
+  }
+
   public static SqlBooleanExpression geLocalDate(String columnName, LocalDate value) {
     return value == null
         ? EMPTY

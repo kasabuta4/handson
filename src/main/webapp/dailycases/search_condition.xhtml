@@ -25,6 +25,14 @@
                                   value="#{日次新規感染者数一覧.p検索条件.p表示期間.end}" />
         </p>
         <p>
+            <h:outputText value="感染者数範囲" />
+            <h:inputText id="cases_begin" converter="javax.faces.Integer"
+                         value="#{日次新規感染者数一覧.p検索条件.p感染者数範囲.start}" />
+            <h:outputText value="〜" />
+            <h:inputText id="cases_end" converter="javax.faces.Integer"
+                         value="#{日次新規感染者数一覧.p検索条件.p感染者数範囲.end}" />
+        </p>
+        <p>
             <h:commandButton id="execute" type="submit" value="実行" title="実行"
                              rendered="#{日次新規感染者数一覧.executionAllowed}"
                              action="#{日次新規感染者数一覧.execute}" />
