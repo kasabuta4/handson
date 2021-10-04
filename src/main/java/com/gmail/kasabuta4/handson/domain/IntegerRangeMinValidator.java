@@ -23,11 +23,11 @@ public class IntegerRangeMinValidator implements ConstraintValidator<IntegerRang
     if (!isInteger(value.getStart()) || !isInteger(value.getEnd()))
       throw new ConstraintDeclarationException(DECLARATION_ERROR_MESSAGE);
 
-    if(!isValid((Integer)value.getStart())) buildConstraintViolation(context, "start");
+    if (!isValid((Integer) value.getStart())) buildConstraintViolation(context, "start");
 
-    if(!isValid((Integer)value.getEnd())) buildConstraintViolation(context, "end");
+    if (!isValid((Integer) value.getEnd())) buildConstraintViolation(context, "end");
 
-    return isValid((Integer)value.getStart()) && isValid((Integer)value.getEnd());
+    return isValid((Integer) value.getStart()) && isValid((Integer) value.getEnd());
   }
 
   private boolean isInteger(Object o) {
