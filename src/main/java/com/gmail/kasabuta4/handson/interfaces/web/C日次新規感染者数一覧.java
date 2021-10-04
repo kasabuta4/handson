@@ -28,7 +28,7 @@ import javax.validation.constraints.NotNull;
 @RequestScoped
 public class C日次新規感染者数一覧 implements Serializable {
 
-  private static final String EXECUTE_COMPONENT_CLIENT_ID = "search_condition:execute";
+  private static final String EXECUTE_COMPONENT_CLIENT_ID = "mainview:search:condition:execute";
 
   private static final String NOT_FOUND_MESSAGE = "検索結果がありません";
 
